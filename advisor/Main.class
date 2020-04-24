@@ -1,0 +1,107 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by Fernflower decompiler)
+//
+
+package advisor;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Scanner;
+
+public class Main {
+    public Main() {
+    }
+
+    private static void print(String var0, ArrayList<String> var1, boolean var2) {
+        if (var2) {
+            System.out.println(var0);
+            Iterator var3 = var1.iterator();
+
+            while(var3.hasNext()) {
+                String var4 = (String)var3.next();
+                System.out.println(var4);
+            }
+        } else {
+            System.out.println("Please, provide access for application.");
+        }
+
+    }
+
+    public static void main(String[] var0) throws IOException {
+        Scanner var1 = new Scanner(System.in);
+        String var3 = "http://localhost:8080&response_type=code";
+        String var4 = "8107a73979f7483eb237bc3be803c37b";
+        boolean var5 = false;
+        String var6 = "https://accounts.spotify.com/authorize?client_id=" + var4 + "&redirect_uri=" + var3;
+        ArrayList var7 = new ArrayList();
+        ArrayList var8 = new ArrayList();
+        ArrayList var9 = new ArrayList();
+        ArrayList var10 = new ArrayList();
+        var8.add("Mountains [Sia, Diplo, Labrinth]");
+        var8.add("Runaway [Lil Peep]");
+        var8.add("The Greatest Show [Panic! At The Disco]");
+        var7.add("Mellow Morning");
+        var9.add("Top Lists");
+        var10.add("Walk Like A Badass");
+        System.out.print(">");
+
+        String var2;
+        for(; !"exit".equalsIgnoreCase(var2 = var1.next()); System.out.print(">")) {
+            String var11 = var2.toLowerCase();
+            byte var12 = -1;
+            switch(var11.hashCode()) {
+            case -1865828127:
+                if (var11.equals("playlists")) {
+                    var12 = 3;
+                }
+                break;
+            case -290659282:
+                if (var11.equals("featured")) {
+                    var12 = 1;
+                }
+                break;
+            case 108960:
+                if (var11.equals("new")) {
+                    var12 = 0;
+                }
+                break;
+            case 3005864:
+                if (var11.equals("auth")) {
+                    var12 = 4;
+                }
+                break;
+            case 1296516636:
+                if (var11.equals("categories")) {
+                    var12 = 2;
+                }
+            }
+
+            switch(var12) {
+            case 0:
+                print("---NEW RELEASES---", var8, var5);
+                break;
+            case 1:
+                print("---FEATURED---", var7, var5);
+                break;
+            case 2:
+                print("---CATEGORIES---", var9, var5);
+                break;
+            case 3:
+                var1.next();
+                print("---MOOD PLAYLISTS---", var10, var5);
+                break;
+            case 4:
+                System.out.println(var6);
+                var5 = true;
+                System.out.println(var5 ? "---SUCCESS---" : "Error!");
+                break;
+            default:
+                System.out.println("Unknown command '" + var2 + "'. Please try another one or type 'exit'.");
+            }
+        }
+
+        System.out.println("---GOODBYE!---");
+    }
+}
