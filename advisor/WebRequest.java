@@ -13,6 +13,16 @@ public class WebRequest {
     private HttpResponse<String> response;
     private HttpRequest request;
     private HttpClient client = HttpClient.newBuilder().build();
+    private static WebRequest webRq;
+
+    private WebRequest() { }
+
+    public static WebRequest getInstance() {
+        if (webRq == null) {
+            webRq = new WebRequest();
+        }
+        return webRq;
+    }
 
     public String webGetToken(String access_api_server, String code, String id, String secret) throws IOException, InterruptedException {
         String json;
